@@ -2,7 +2,8 @@
 
 ## Overview
 
-The following outlines the custom integration of `e2b.dev` tools within Dify.ai. This configuration enables a flexible environment for executing scripts with specific pre-configured settings. Below are key parameters essential for using `e2b.dev` within Dify.
+[Demo Here](https://x.com/i/status/1849897515086172497)
+The following outlines the custom integration of `e2b.dev` tools within Dify.ai. This configuration enables a flexible environment for executing scripts with specific pre-configured settings. Below are key parameters essential for using `e2b.dev` within Dify. You can import the DSL from [Matlab Scientists Demo.yml](https://raw.githubusercontent.com/LogicOber/dify-e2b-custom-tool/refs/heads/main/Matlab%20Scientists%20Demo.yml)
 
 ### 1️⃣ Code to Execute
 The first parameter is the code itself, representing the complete script or program you intend to run. For example, if you are using Python to solve a computation problem, you would import the necessary Python packages, perform the computation, and then output the results.
