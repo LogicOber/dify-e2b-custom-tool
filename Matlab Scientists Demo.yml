@@ -1,0 +1,618 @@
+app:
+  description: ''
+  icon: 👩‍🔬
+  icon_background: '#FFE4E8'
+  mode: advanced-chat
+  name: '[Dify + E2B] Scientists Demo'
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1729868178560-llm
+      selected: false
+      source: '1729868178560'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: code
+      id: llm-source-1729876422471-target
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: '1729876422471'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: tool
+      id: 1729876422471-source-1729872438800-target
+      selected: false
+      source: '1729876422471'
+      sourceHandle: source
+      target: '1729872438800'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: answer
+      id: 1729872438800-source-answer-target
+      source: '1729872438800'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: llm
+      id: llm-source-1729878132825-target
+      source: llm
+      sourceHandle: source
+      target: '1729878132825'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1729878132825-source-answer-target
+      source: '1729878132825'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 54
+      id: '1729868178560'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20241022
+          provider: anthropic
+        prompt_template:
+        - id: 9766d454-d4c8-409f-b893-1e6ff7c9cb9e
+          role: system
+          text: "You are a python programmer tasked with translating MATLAB code for\
+            \ data analysis into equivalent Python code. Your goal is to solve the\
+            \ given problem using Python, importing relevant MATLAB-like packages.\n\
+            \nHere's the MATLAB problem description:\n<matlab_problem>\n{{#sys.query#}}\n\
+            </matlab_problem>\n\nTo solve this problem:\n1. Analyze the MATLAB problem\
+            \ and identify the key operations and functions used.\n2. Write equivalent\
+            \ Python code using appropriate libraries such as NumPy, SciPy, and Matplotlib.\n\
+            3. Ensure your code is complete and executable, including all necessary\
+            \ import statements at the beginning.\n4. Use print() statements for any\
+            \ text output.\n5. For graphical output, use plt.show() to display the\
+            \ plots. Do not use savefig().\n6. Remember import allllll the library.\n\
+            7. Please don’t use overly complex implementations, ensure the stability\
+            \ of the code.\n\nYou only have these Pre-installed libraries:\nThe sandbox\
+            \ comes with a set of pre-installed Python libraries for data analysis\
+            \ but you can install additional packages:\naiohttp (v3.9.3)\nbeautifulsoup4 (v4.12.3)\n\
+            bokeh (v3.3.4)\ngensim (v4.3.2)\nimageio (v2.34.0)\njoblib (v1.3.2)\n\
+            librosa (v0.10.1)\nmatplotlib (v3.8.3)\nnltk (v3.8.1)\nnumpy (v1.26.4)\n\
+            opencv-python (v4.9.0.80)\nopenpyxl (v3.1.2)\npandas (v1.5.3)\nplotly (v5.19.0)\n\
+            pytest (v8.1.0)\npython-docx (v1.1.0)\npytz (v2024.1)\nrequests (v2.26.0)\n\
+            scikit-image (v0.22.0)\nscikit-learn (v1.4.1.post1)\nscipy (v1.12.0)\n\
+            seaborn (v0.13.2)\nsoundfile (v0.12.1)\nspacy (v3.7.4)\ntextblob (v0.18.0)\n\
+            tornado (v6.4)\nurllib3 (v1.26.7)\nxarray (v2024.2.0)\nxlrd (v2.0.1)\n\
+            sympy (v1.12)\n\nif you need to \n---\n\nPresent your solution in the\
+            \ following format:\n<python_code>\n# Your complete Python code here,\
+            \ including import statements\n</python_code>\n\nAdditional guidelines:\n\
+            - Begin your code with all required import statements.\n- Use NumPy arrays\
+            \ instead of MATLAB matrices where appropriate.\n- Replace MATLAB-specific\
+            \ functions with their Python/NumPy equivalents.\n- Include comments to\
+            \ explain your code, especially for complex operations.\n- Ensure all\
+            \ variables are properly defined before use.\n- If the problem involves\
+            \ multiple steps or operations, consider breaking your code into logical\
+            \ sections with comments.\n\nFirst, answer whether you need to install\
+            \ any additional packages. Then output the complete code all at once(Try\
+            \ to solve it using existing packages as much as possible.\n). Remember\
+            \ to enclose your entire Python solution within the <python_solution>\
+            \ tags. Your code should be complete and ready to run without any additional\
+            \ modifications.\nPlease remember, when dealing with MATLAB images, you\
+            \ don’t need to save them, just show them."
+        selected: false
+        title: Matlab Expert
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: llm
+      position:
+        x: 385.1317971165108
+        y: 282
+      positionAbsolute:
+        x: 385.1317971165108
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '## ⌨️ Code to be executed
+
+
+          ```python
+
+          {{#1729876422471.result#}}
+
+          ```
+
+
+          ---
+
+
+          ## 💬 Jack''s Explanation
+
+
+          {{#1729878132825.text#}}
+
+
+          ---
+
+
+          ## ✨ Result
+
+
+          {{#1729872438800.text#}}
+
+          {{#1729872438800.files#}}
+
+          '
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 139
+      id: answer
+      position:
+        x: 1013.9370886628035
+        y: 282
+      positionAbsolute:
+        x: 1013.9370886628035
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: e2b
+        provider_name: e2b
+        provider_type: builtin
+        selected: false
+        title: e2b Sandbox
+        tool_configurations:
+          language: python
+          template_id: null
+          timeout: 300
+        tool_label: e2b Sandbox
+        tool_name: e2b_sandbox
+        tool_parameters:
+          code:
+            type: mixed
+            value: '{{#1729876422471.result#}}'
+        type: tool
+      height: 142
+      id: '1729872438800'
+      position:
+        x: 685.7242406617748
+        y: 414.2859611607511
+      positionAbsolute:
+        x: 685.7242406617748
+        y: 414.2859611607511
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "def main(arg1: str) -> dict:\n    start_tag = \"<python_code>\"\n \
+          \   end_tag = \"</python_code>\"\n    \n    start_index = arg1.index(start_tag)\
+          \ + len(start_tag)\n    end_index = arg1.index(end_tag)\n    \n    content\
+          \ = arg1[start_index:end_index].strip()\n    return {\"result\": content}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Code Extract
+        type: code
+        variables:
+        - value_selector:
+          - llm
+          - text
+          variable: arg1
+      height: 54
+      id: '1729876422471'
+      position:
+        x: 385.1317971165108
+        y: 414.2859611607511
+      positionAbsolute:
+        x: 385.1317971165108
+        y: 414.2859611607511
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: ''
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: claude-3-5-sonnet-20241022
+          provider: anthropic
+        prompt_template:
+        - id: efe8c8cf-c71d-4e1e-8dd7-83488e1a077f
+          role: system
+          text: 'You are Jack, a patient and knowledgeable MATLAB teacher. Your goal
+            is to guide students through problem-solving processes in a gentle, encouraging
+            manner. You will be presented with a student''s MATLAB question and a
+            corresponding solution with analysis. Your task is to explain the solution
+            in a way that promotes understanding and independent thinking.
+
+
+            Here''s the student''s question:
+
+            <student_question>
+
+            {{#sys.query#}}
+
+            </student_question>
+
+
+            And here''s the solution and analysis:
+
+            <solution_and_analysis>
+
+            {{#llm.text#}}
+
+            </solution_and_analysis>
+
+
+            Before responding to the student, carefully review the question, solution,
+            and analysis. Break down the problem-solving process into logical steps.
+            Identify key concepts and potential areas where the student might struggle.
+
+
+            When explaining the solution to the student, follow these guidelines:
+
+            1. Use a friendly and encouraging tone. Incorporate appropriate emojis
+            to make your explanation more engaging.
+
+            2. Start with gentle prompts that encourage the student to think about
+            the problem. For example, "What do you think might be a good first step?
+            🤔"
+
+            3. Provide hints and ask leading questions rather than giving away the
+            entire solution immediately.
+
+            4. Explain the reasoning behind each step in the solution process.
+
+            5. Use simple, clear language and avoid overly technical terms unless
+            necessary.
+
+            6. Relate the concepts to real-world examples or applications when possible.
+
+            7. Encourage the student to ask questions if anything is unclear.
+
+            8. Strictly based on the code in <solution_and_analysis>.
+
+
+            Structure your response in the following format:
+
+            [Your friendly greeting and introduction]
+
+
+            [Initial prompts to encourage student thinking]
+
+
+            [Step-by-step explanation with reasoning, interspersed with questions
+            and encouragement]
+
+
+            [Conclusion and invitation for further questions]
+
+
+            Remember to maintain the persona of Patient Teacher Jack throughout your
+            response. Your goal is not just to provide the correct answer, but to
+            guide the student towards understanding and independent problem-solving.'
+        selected: false
+        title: Patient Teacher - Jack
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1729878132825'
+      position:
+        x: 685.7242406617748
+        y: 282
+      positionAbsolute:
+        x: 685.7242406617748
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: lysonober
+        desc: ''
+        height: 460
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"📌 Canvas as backend - Everyone can make Apps with Dify.ai
+          🚀 & E2B 🚀","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"1️⃣
+          Today, for product managers and researchers working on enterprise problems
+          or research topics,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"2️⃣
+          when they need to implement specific program functionalities to solve problems
+          or advance their research,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"3️⃣
+          they are forced to spend a significant amount of time coding and implementing
+          these functionalities manually,","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"4️⃣
+          therefore, the customer needs a way to visually represent their thought
+          processes on a canvas and automatically convert these representations into
+          functional, executable code without requiring programming skills.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 460
+      id: '1729881634361'
+      position:
+        x: 80
+        y: 367.0542102881128
+      positionAbsolute:
+        x: 80
+        y: 367.0542102881128
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: lysonober
+        desc: ''
+        height: 252
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"📌 Sample","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"👉
+          Using 3d plotting function to get a feel for a function","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Use
+          the 3d plotting software of your choice to find out how many","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"maxima
+          of the function z = sin y cos x there are in the range","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          7< x < 7 and -7 < y < 7.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Hint:
+          you will need to use meshgrid.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"I
+          count 10.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 241
+      height: 252
+      id: '1729881682090'
+      position:
+        x: 386.6299147832786
+        y: 492.84043261806914
+      positionAbsolute:
+        x: 386.6299147832786
+        y: 492.84043261806914
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 241
+    - data:
+        author: lysonober
+        desc: ''
+        height: 100
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"📌
+          Analyze problems and generate Python code","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 242
+      height: 100
+      id: '1729881704286'
+      position:
+        x: 385.1317971165108
+        y: 156.05796637979898
+      positionAbsolute:
+        x: 385.1317971165108
+        y: 156.05796637979898
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 242
+    - data:
+        author: lysonober
+        desc: ''
+        height: 147
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"📌
+          Set up a patient and nurturing teacher named Jack who patiently guides students
+          in code writing ideas and knowledge points based on the previously generated
+          code","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 147
+      id: '1729881731573'
+      position:
+        x: 685.7242406617748
+        y: 107.1367916881251
+      positionAbsolute:
+        x: 685.7242406617748
+        y: 107.1367916881251
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        author: lysonober
+        desc: ''
+        height: 190
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          16px;","text":"📌 Utilize E2B to call a remote Sandbox environment","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"using
+          Template_ID to specify an environment containing specific libraries. For
+          example, a Python environment.","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 241
+      height: 190
+      id: '1729881769256'
+      position:
+        x: 688.2463403701631
+        y: 572.6402940962134
+      positionAbsolute:
+        x: 688.2463403701631
+        y: 572.6402940962134
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 241
+    - data:
+        author: lysonober
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Output","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1729881836641'
+      position:
+        x: 1019.6186465082202
+        y: 442.79645169109716
+      positionAbsolute:
+        x: 1019.6186465082202
+        y: 442.79645169109716
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    viewport:
+      x: -471.338570032334
+      y: 115.26851977791424
+      zoom: 0.8797481656389353
