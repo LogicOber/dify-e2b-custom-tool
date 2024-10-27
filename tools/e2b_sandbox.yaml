@@ -1,0 +1,90 @@
+identity:
+  name: e2b_sandbox
+  author: lysonober
+  label:
+    en_US: e2b Sandbox
+    zh_Hans: e2b 沙盒
+    ja_JP: e2b サンドボックス
+
+description:
+  human:
+    en_US: A tool to run code in e2b.dev sandbox environments.
+    zh_Hans: 在 e2b.dev 沙盒环境中运行代码的工具。
+    ja_JP: e2b.dev サンドボックス環境でコードを実行するためのツール。
+  llm: A tool to execute code within an e2b.dev sandbox environment.
+
+parameters:
+  - name: code
+    type: string
+    required: true
+    label:
+      en_US: Code to Execute
+      zh_Hans: 要执行的代码
+      ja_JP: 実行するコード
+    human_description:
+      en_US: The code to run inside the sandbox.
+      zh_Hans: 在沙盒中运行的代码。
+      ja_JP: サンドボックス内で実行するコード。
+    llm_description: The code to execute in the sandbox.
+    form: llm
+
+  - name: language
+    type: select
+    required: true
+    options:
+      - value: python
+        label:
+          en_US: Python
+          zh_Hans: Python
+          ja_JP: Python
+      - value: javascript
+        label:
+          en_US: JavaScript
+          zh_Hans: JavaScript
+          ja_JP: JavaScript
+    default: python
+    label:
+      en_US: Programming Language
+      zh_Hans: 编程语言
+      ja_JP: プログラミング言語
+    human_description:
+      en_US: The programming language of the code.
+      zh_Hans: 代码的编程语言。
+      ja_JP: コードのプログラミング言語。
+    llm_description: The programming language of the code.
+    form: form
+
+  - name: template_id
+    type: string
+    required: false
+    label:
+      en_US: e2b Template ID
+      zh_Hans: e2b 模板 ID
+      ja_JP: e2b テンプレート ID
+    human_description:
+      en_US: The ID of the e2b sandbox template to use.
+      zh_Hans: 要使用的 e2b 沙盒模板的 ID。
+      ja_JP: 使用する e2b サンドボックステンプレートの ID。
+    placeholder:
+      en_US: Enter the e2b Template ID (optional)
+      zh_Hans: 输入 e2b 模板 ID（可选）
+      ja_JP: e2b テンプレート ID（オプショナル）を入力
+    form: form
+
+  - name: timeout
+    type: number
+    required: false
+    default: 300
+    label:
+      en_US: Sandbox Timeout (seconds)
+      zh_Hans: 沙盒超时时间（秒）
+      ja_JP: サンドボックスタイムアウト（秒）
+    human_description:
+      en_US: The time in seconds before the sandbox is automatically shutdown.
+      zh_Hans: 沙盒在自动关闭前的时间（秒）。
+      ja_JP: サンドボックスが自動的にシャットダウンされる前の時間（秒）。
+    placeholder:
+      en_US: Enter the sandbox timeout in seconds (optional)
+      zh_Hans: 输入沙盒超时时间（秒）（可选）
+      ja_JP: サンドボックスタイムアウト（秒）（オプショナル）を入力
+    form: form

@@ -1,0 +1,32 @@
+identity:
+  author: lysonober
+  name: e2b
+  label:
+    en_US: e2b.dev
+    zh_Hans: e2b.dev
+    ja_JP: e2b.dev
+  description:
+    en_US: e2b.dev Sandbox Provider
+    zh_Hans: e2b.dev 沙盒供应商
+    ja_JP: e2b.dev サンドボックスプロバイダー
+  icon: icon.png
+  tags:
+    - utilities
+
+credentials_for_provider:
+  e2b_api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: e2b.dev API Key
+      zh_Hans: e2b.dev API 密钥
+      ja_JP: e2b.dev APIキー
+    placeholder:
+      en_US: Enter your e2b.dev API Key
+      zh_Hans: 请输入您的 e2b.dev API 密钥
+      ja_JP: ご自分の e2b.dev APIキーを入力してください
+    help:
+      en_US: Get your API key from e2b.dev dashboard
+      zh_Hans: 从 e2b.dev 控制台获取您的 API 密钥
+      ja_JP: e2b.dev ダッシュボードからAPIキーを取得してください
+    url: https://e2b.dev/dashboard&tab=keys
